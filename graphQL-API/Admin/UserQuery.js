@@ -1,41 +1,27 @@
-const graphql = require('graphql');
-const path = require('path')
+const { GraphQLObjectType, GraphQLList } = require('graphql');
 const userType = require('./UserType');
-const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
+const path = require('path');
+const fs = require('fs');
 
-const _statement1 = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/allUsers.sql')).toString();
-const _statement2 = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/userByUsername.sql')).toString();
+const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/allUsers.sql')).toString();
 
-const userQuery = new graphql.GraphQLObjectType({
+const UserQuery = new GraphQLObjectType({
     name: 'Query',
     fields: () => {
         return {
             users: {
-                type: new graphql.GraphQLList(userType),
+                type: new GraphQLList(userType),
                 resolve: async () => {
-                    const users = await queryFunction(_statement1);
+                    const users = await queryFunction(_statement)
                     if(!users) {
                         throw new Error('Error while fetching data')
                     }
                     return users;
                 }
-            },
-            userByUsername: {
-                type: userType,
-                args: {
-                    username: { type:  graphql.GraphQLNonNull(graphql.GraphQLString) }
-                },
-                resolve: async (root, args) => {
-                    const user = await queryFunction(_statement2, args.username);
-                    if(!user) {
-                        throw new Error('Error while fetching data')
-                    }
-                    return user;
-                }
             }
         }
     }
-})
+});
 
-module.exports = userQuery;
+module.exports = UserQuery;

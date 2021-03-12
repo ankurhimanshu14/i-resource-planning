@@ -1,21 +1,25 @@
-const graphql = require('graphql');
-const path = require('path')
+const { GraphQLNonNull, GraphQLString } = require('graphql');
 const userType = require('./UserType');
-const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
+const path = require('path');
+const fs = require('fs');
 
 const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/updateUser.sql')).toString();
 
 const updateUser = {
     type: userType,
     args: {
-        fullName: { type:  graphql.GraphQLNonNull(graphql.GraphQLString) },
-        password: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) }
+        username: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        password: {
+            type: new GraphQLNonNull(GraphQLString)
+        }
     },
     resolve: async (root, args) => {
-        const updatedUser = await queryFunction(_statement, [args.fullName, args.password]);
+        const updatedUser = await queryFunction(_statement, [args.password, args.username]);
         if(!updatedUser) {
-            throw new Error('Error')
+            throw new Error('Error');
         }
         return updatedUser;
     }

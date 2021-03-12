@@ -1,16 +1,23 @@
-const graphql = require('graphql');
+const {
+    GraphQLObjectType,
+    GraphQLNonNull,
+    GraphQLID,
+    GraphQLString
+} = require('graphql');
 
-const userType = new graphql.GraphQLObjectType({
-    name: 'User',
+const userType = new GraphQLObjectType({
+    name: 'user',
     fields: () => {
         return {
-            id: { type: new graphql.GraphQLNonNull(graphql.GraphQLID) },
-            fullName: { type: graphql.GraphQLString },
-            email: { type: graphql.GraphQLString },
-            username: { type: graphql.GraphQLString },
-            password: { type: graphql.GraphQLString }
-        };
+            id: { type: new GraphQLNonNull(GraphQLID) },
+            fullName: { type: GraphQLString },
+            email: { type: GraphQLString },
+            username: { type: GraphQLString },
+            password: { type: GraphQLString },
+
+        }
     }
 });
 
 module.exports = userType;
+
