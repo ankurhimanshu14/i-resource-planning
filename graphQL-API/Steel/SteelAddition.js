@@ -1,13 +1,13 @@
 const graphql = require('graphql');
 const path = require('path')
-const userType = require('./UserType');
+const steelType = require('./SteelType');
 const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
 
-const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/addUser.sql')).toString();
+const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/addSteel.sql')).toString();
 
-const addUser = {
-    type: userType,
+const addSteel = {
+    type: steelType,
     args: {
         fullName: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
         email: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },

@@ -4,7 +4,7 @@ const userType = require('./UserType');
 const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
 
-const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/updateUser.sql')).toString();
+const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/updateUser.sql')).toString();
 
 const updateUser = {
     type: userType,

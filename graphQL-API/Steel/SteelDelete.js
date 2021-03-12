@@ -4,7 +4,7 @@ const userType = require('./UserType');
 const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
 
-const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/deleteUser.sql')).toString();
+const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/deleteUser.sql')).toString();
 
 const deleteUser = {
     type: userType,

@@ -6,7 +6,7 @@ const UserSchema = require('./graphQL-API/Admin/UserSchema')
 const PORT = process.env.PORT || 4000;
 const app = express();
 
-app.use('/graphql', graphqlHTTP({
+app.use('/', graphqlHTTP({
     schema: UserSchema,
     rootValue: global,
     graphiql: true,
@@ -14,5 +14,5 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 app.listen(PORT, () => {
-    console.log(`Running a GraphQL API at http://localhost:4000/graphql`);
+    console.info(`Running a GraphQL API at http://localhost:${PORT}/`);
 });
