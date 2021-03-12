@@ -4,7 +4,8 @@ const queryFunction = require('../../dBConfig/queryFunction');
 const path = require('path');
 const fs = require('fs');
 
-const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/addUser.sql')).toString();
+const _statement1 = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/createUserTable.sql')).toString();
+const _statement2 = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/addUser.sql')).toString();
 
 const addUser = {
     type: userType,
@@ -23,9 +24,16 @@ const addUser = {
         }
     },
     resolve: async (root, args) => {
-        const newUser = await queryFunction(_statement, [args.fullName, args.email, args.username, args.password]);
+
+        const createdTable = await queryFunction(_statement1);
+        if(!createdTable) {
+            throw new Error('Error in creating table');
+        }
+        
+        const _args = Object.values(args);
+        const newUser = await queryFunction(_statement2, _args);
         if(!newUser) {
-            throw new Error('error');
+            throw new Error('Error in adding a new user');
         }
         return newUser;
     }

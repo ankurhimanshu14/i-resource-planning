@@ -13,7 +13,7 @@ const steelType = new graphql.GraphQLObjectType({
             heatCode: { type: graphql.GraphQLString },
             approvedComponents: { type: [graphql.GraphQLString] },
             receivedQty: { type: graphql.GraphQLInt },
-            releasecQty: { type: graphql.GraphQLInt },
+            releasedQty: { type: graphql.GraphQLInt },
             availableQty: { type: graphql.GraphQLInt },
             uom: { type: graphql.GraphQLString }
         };

@@ -9,8 +9,7 @@ const app = express();
 app.use('/', graphqlHTTP({
     schema: UserSchema,
     rootValue: global,
-    graphiql: true,
-    prettify: true
+    graphiql: true
 }));
 
 app.listen(PORT, () => {

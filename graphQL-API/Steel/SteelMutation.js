@@ -1,9 +1,9 @@
-const addUser = require('./UserAddition');
-const updateUser = require('./UserUpdate');
-const deleteUser = require('./UserDelete');
+const addSteel = require('./SteelAddition');
+const updateSteel = require('./SteelUpdate');
+const deleteSteel = require('./SteelDelete');
 
 module.exports = {
-    addUser,
-    updateUser,
-    deleteUser
+    addSteel,
+    updateSteel,
+    deleteSteel
 };

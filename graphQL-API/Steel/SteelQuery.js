@@ -1,27 +1,27 @@
-const graphql = require('graphql');
+const { GraphQLObjectType, GraphQLList } = require('graphql');
 const path = require('path')
-const userType = require('./UserType');
+const steelType = require('./SteelType');
 const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
 
 const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/allUsers.sql')).toString();
 
-const userQuery = new graphql.GraphQLObjectType({
+const steelQuery = new graphql.GraphQLObjectType({
     name: 'Query',
     fields: () => {
         return {
-            users: {
-                type: new graphql.GraphQLList(userType),
+            steels: {
+                type: new GraphQLList(steelType),
                 resolve: async () => {
-                    const users = await queryFunction(_statement);
-                    if(!users) {
+                    const steels = await queryFunction(_statement);
+                    if(!steels) {
                         throw new Error('Error while fetching data')
                     }
-                    return users;
+                    return steels;
                 }
             }
         }
     }
 })
 
-module.exports = userQuery;
+module.exports = steelQuery;

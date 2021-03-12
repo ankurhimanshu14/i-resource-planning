@@ -1,24 +1,25 @@
-const graphql = require('graphql');
+const {GraphQLNonNull, GraphQLString} = require('graphql');
 const path = require('path')
-const userType = require('./UserType');
+const steelType = require('./UserType');
 const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
 
-const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/updateUser.sql')).toString();
+const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/updateSteel.sql')).toString();
 
-const updateUser = {
-    type: userType,
+const updateSteel = {
+    type: steelType,
     args: {
-        fullName: { type:  graphql.GraphQLNonNull(graphql.GraphQLString) },
-        password: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) }
+        challanNo: { type:  GraphQLNonNull(GraphQLString) },
+        heatNo: { type: new GraphQLNonNull(GraphQLString) },
+        approvedComponents: { type: [Components] }
     },
     resolve: async (root, args) => {
-        const updatedUser = await queryFunction(_statement, [args.fullName, args.password]);
-        if(!updatedUser) {
+        const updatedSteel = await queryFunction(_statement, [args.fullName, args.password]);
+        if(!updatedSteel) {
             throw new Error('Error')
         }
-        return updatedUser;
+        return updatedSteel;
     }
 }
 
-module.exports = updateUser;
+module.exports = updateSteel;

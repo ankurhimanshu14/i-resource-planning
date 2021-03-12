@@ -1,13 +1,13 @@
-var graphql = require('graphql')
-var UserQuery = require('./UserQuery');
-var UserMutation = require('./UserMutation');
+var {GraphQLSchema, GraphQLObjectType} = require('graphql')
+var SteelQuery = require('./SteelQuery');
+var SteelMutation = require('./SteelMutation');
 
-const UserSchema = new graphql.GraphQLSchema({
-    query: UserQuery,
-    mutation: new graphql.GraphQLObjectType({
+const SteelSchema = new GraphQLSchema({
+    query: SteelQuery,
+    mutation: new GraphQLObjectType({
         name: 'Mutation',
-        fields: {UserMutation}
+        fields: SteelMutation
     })
 });
 
-module.exports = UserSchema;
+module.exports = SteelSchema;

@@ -1,24 +1,25 @@
-const graphql = require('graphql');
+const { GraphQLNonNull, GrapghQLID } = require('graphql');
 const path = require('path')
-const userType = require('./UserType');
+const steelType = require('./SteelType');
 const fs = require('fs');
 const queryFunction = require('../../dBConfig/queryFunction');
 
 const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/deleteUser.sql')).toString();
 
-const deleteUser = {
-    type: userType,
+const deleteSteel = {
+    type: steelType,
     args: {
-        username: { type: new graphql.GraphQLObjectType(graphql.GraphQLString) },
-        password: { type: new graphql.GraphQLObjectType(graphql.GraphQLString) },
+        id: {type: new GraphQLNonNull(GraphQLID) }
     },
     resolve: async (root, args) => {
-        const deletedUser = await queryFunction(_statement, [args.username, args.password]);
-        if(!deletedUser) {
+        const _args = Object.values(args);
+
+        const deletedSteel = await queryFunction(_statement, _args);
+        if(!deletedSteel) {
             throw new Error('Error')
         }
-        return deletedUser;
+        return deletedSteel;
     }
 };
 
-module.exports = deleteUser;
+module.exports = deleteSteel;
