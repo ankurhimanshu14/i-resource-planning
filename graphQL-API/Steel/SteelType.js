@@ -1,23 +1,31 @@
-const graphql = require('graphql');
+const {
+    GraphQLObjectType,
+    GraphQLNonNull,
+    GraphQLID,
+    GraphQLString,
+    GraphQLInt
+} = require('graphql');
 
-const steelType = new graphql.GraphQLObjectType({
-    name: 'Steel',
+const steelType = new GraphQLObjectType({
+    name: 'steel',
     fields: () => {
         return {
-            id: { type: new graphql.GraphQLNonNull(graphql.GraphQLID) },
-            challanNo: { type: graphql.GraphQLInt },
-            challanDate: { type: graphql.GraphQLString },
-            grade: { type: graphql.GraphQLString },
-            section: { type: graphql.GraphQLString },
-            heatNo: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
-            heatCode: { type: graphql.GraphQLString },
-            approvedComponents: { type: [graphql.GraphQLString] },
-            receivedQty: { type: graphql.GraphQLInt },
-            releasedQty: { type: graphql.GraphQLInt },
-            availableQty: { type: graphql.GraphQLInt },
-            uom: { type: graphql.GraphQLString }
-        };
+            id: { type: new GraphQLNonNull(GraphQLID) },
+            challanNo: { type: new GraphQLNonNull(GraphQLInt) },
+            challanDate: { type: new GraphQLNonNull(GraphQLString) },
+            grade: { type: new GraphQLNonNull(GraphQLString) },
+            section: { type: new GraphQLNonNull(GraphQLString) },
+            heatNo: { type: new GraphQLNonNull(GraphQLString) },
+            heatCode: { type: GraphQLString },
+            jominyValue: { type: GraphQLString },
+            approvedComponents: { type: GraphQLString },
+            receivedQty: { type: new GraphQLNonNull(GraphQLInt) },
+            issuedQty: { type: new GraphQLNonNull(GraphQLInt) },
+            availableQty: { type: new GraphQLNonNull(GraphQLInt) },
+            uom: {type: new GraphQLNonNull(GraphQLString) }
+        }
     }
 });
 
 module.exports = steelType;
+

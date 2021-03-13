@@ -1,22 +1,31 @@
-const {GraphQLNonNull, GraphQLString} = require('graphql');
-const path = require('path')
-const steelType = require('./UserType');
-const fs = require('fs');
+const { GraphQLNonNull, GraphQLString, GraphQLInt } = require('graphql');
+const steelType = require('./SteelType');
 const queryFunction = require('../../dBConfig/queryFunction');
+const path = require('path');
+const fs = require('fs');
 
-const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/updateSteel.sql')).toString();
+const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Steel/updateSteel.sql')).toString();
 
 const updateSteel = {
     type: steelType,
     args: {
-        challanNo: { type:  GraphQLNonNull(GraphQLString) },
-        heatNo: { type: new GraphQLNonNull(GraphQLString) },
-        approvedComponents: { type: [Components] }
+        challanNo: {
+            type: new GraphQLNonNull(GraphQLInt)
+        },
+        heatNo: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        issuedQty: {
+            type: new GraphQLNonNull(GraphQLInt)
+        }
     },
     resolve: async (root, args) => {
-        const updatedSteel = await queryFunction(_statement, [args.fullName, args.password]);
+
+        const _args = Object.values(args);
+        console.log(_args);
+        const updatedSteel = await queryFunction(_statement, [args.challanNo, args.heatNo, args.issuedQty]);
         if(!updatedSteel) {
-            throw new Error('Error')
+            throw new Error('Error');
         }
         return updatedSteel;
     }

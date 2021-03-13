@@ -7,7 +7,7 @@ const fs = require('fs');
 const _statement = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/allUsers.sql')).toString();
 
 const UserQuery = new GraphQLObjectType({
-    name: 'Query',
+    name: 'UserQuery',
     fields: () => {
         return {
             users: {

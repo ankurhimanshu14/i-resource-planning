@@ -6,9 +6,10 @@ INSERT INTO steels
     section,
     heatNo,
     heatCode,
+    jominyValue,
     approvedComponents,
     receivedQty,
-    releasedQty,
+    issuedQty,
     availableQty,
     uom
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);

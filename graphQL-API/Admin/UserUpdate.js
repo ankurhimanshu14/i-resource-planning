@@ -17,7 +17,9 @@ const updateUser = {
         }
     },
     resolve: async (root, args) => {
-        const updatedUser = await queryFunction(_statement, [args.password, args.username]);
+
+        const _args = Object.values(args);
+        const updatedUser = await queryFunction(_statement, _args);
         if(!updatedUser) {
             throw new Error('Error');
         }
