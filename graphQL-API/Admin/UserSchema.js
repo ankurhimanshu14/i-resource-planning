@@ -3,7 +3,7 @@ const UserQuery = require('./UserQuery');
 const UserMutation = require('./UserMutation');
 
 const UserSchema = new GraphQLSchema ({
-    query: UserQuery,
+    userQuery: UserQuery,
     mutation: new GraphQLObjectType({
         name: 'UserMutation',
         fields: UserMutation
