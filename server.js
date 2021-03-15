@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
 
-const routes = require('./graphQL-API');
+const routes = require('./graphQL_API');
 
 const PORT = process.env.PORT || 4000;
 const app = express();
