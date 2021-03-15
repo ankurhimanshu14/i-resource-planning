@@ -1,3 +1,3 @@
 UPDATE steels
-SET issuedQty += issued, availableQty = availableQty - issuedQty
+SET availableQty = availableQty - issuedQty, issuedQty = receivedQty - availableQty
 WHERE challanNo = ? AND heatNo = ?;

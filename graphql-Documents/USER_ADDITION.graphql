@@ -1,0 +1,10 @@
+mutation {
+    addUser(
+        fullName,
+        email,
+        username,
+        password
+    ) {
+    id
+    }
+}

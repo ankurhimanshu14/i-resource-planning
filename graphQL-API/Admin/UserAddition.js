@@ -9,6 +9,7 @@ const _statement1 = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/crea
 const _statement2 = fs.readFileSync(path.join(__dirname + '/../../sql/Admin/addUser.sql')).toString();
 
 const addUser = {
+    name: 'User',
     type: userType,
     args: {
         fullName: {
