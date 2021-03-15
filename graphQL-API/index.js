@@ -1,5 +1,6 @@
 const UserSchema = require('./Admin/UserSchema');
 const SteelSchema = require('./Steel/SteelSchema');
+const EmployeeSchema = require('./Employee/EmployeeSchema');
 
 const routes = {
     users: {
@@ -9,6 +10,10 @@ const routes = {
     steels: {
         path: '/steels',
         schema: SteelSchema
+    },
+    employees: {
+        path: '/employees',
+        schema: EmployeeSchema
     }
 }
 

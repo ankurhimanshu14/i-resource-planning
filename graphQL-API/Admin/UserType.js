@@ -5,7 +5,7 @@ const {
     GraphQLString,
     GraphQLList
 } = require('graphql');
-const employeeType = require('../Employee/EmployeeType');
+// const employeeType = require('../Employee/EmployeeType');
 const UserRoleEnum = require('./UserRoleEnumType');
 const DateTime = require('../Date/DateTimeType');
 
@@ -15,7 +15,7 @@ const userType = new GraphQLObjectType({
     fields: () => {
         return {
             id: { type: new GraphQLNonNull(GraphQLID) },
-            employeeId: { type: new GraphQLList(employeeType)},
+            // employeeId: { type: new GraphQLList(employeeType)},
             officialEmail: { type: GraphQLString },
             username: { type: GraphQLString },
             password: { type: GraphQLString },
