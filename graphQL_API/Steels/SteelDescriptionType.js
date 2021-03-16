@@ -1,8 +1,8 @@
-const { GraphQLNonNull, GraphQLString, GraphQLInt, GraphQLObjectType } = require('graphql');
+const { GraphQLNonNull, GraphQLString, GraphQLInt, GraphQLInterfaceType } = require('graphql');
 const SteelGradeEnumType = require('./SteelGradeEnumType');
 const SteelSectionEnumType = require('./SteelSectionEnumType');
 
-const RMDescriptionType = new GraphQLObjectType({
+const RMDescriptionType = new GraphQLInterfaceType({
     name: 'SteelDescriptionType',
     description: 'Steel description type',
     fields: () => {

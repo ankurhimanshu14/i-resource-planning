@@ -1,6 +1,6 @@
 const PartDescriptionSchema = require('./Parts/PartDescriptionSchema');
 const SteelDescriptionSchema = require('./Steels/SteelDescriptionSchema');
-
+const ProductSchema = require('./Products/ProductSchema');
 const routes = {
     PartDescription: {
         path: '/partDescription',
@@ -9,7 +9,11 @@ const routes = {
     SteelDescription: {
         path: '/steelDescription',
         schema: SteelDescriptionSchema
-    }
+    },
+    Product: {
+        path: '/product',
+        schema: ProductSchema
+    },
 };
 
 module.exports = routes;

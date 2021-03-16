@@ -1,7 +1,7 @@
-const { GraphQLNonNull, GraphQLString, GraphQLObjectType } = require('graphql');
+const { GraphQLNonNull, GraphQLString, GraphQLInterfaceType } = require('graphql');
 const PartProfileEnumType = require('./PartProfileEnumType');
 
-const PartDescriptionType = new GraphQLObjectType({
+const PartDescriptionType = new GraphQLInterfaceType({
     name: 'PartDescription',
     description: 'Part description type',
     fields: () => {

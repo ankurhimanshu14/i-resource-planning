@@ -1,4 +1,4 @@
-const { GraphQLNonNull, GraphQLString, GraphQLObjectType } = require('graphql');
+const { GraphQLNonNull, GraphQLString } = require('graphql');
 const queryFunction = require('../../dBConfig/queryFunction');
 const PartDescriptionType = require('./PartDescriptionType');
 const PartProfileEnumType = require('./PartProfileEnumType');

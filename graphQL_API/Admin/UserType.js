@@ -21,16 +21,16 @@ const UserType = new GraphQLObjectType({
         role: {
             type: new GraphQLNonNull(UserRoleEnumType)
         },
-        created:  new GraphQLObjectType({
-            by: {
-                type: new GraphQLNonNull(UserType),
-                defaultValue: 'SUPER_USER'
-            },
-            on: {
-                type: new GraphQLNonNull(DateTime),
-                defaultValue: () => (Date.now())
-            }
-        })
+        // created:  new GraphQLObjectType({
+        //     by: {
+        //         type: new GraphQLNonNull(UserType),
+        //         defaultValue: 'SUPER_USER'
+        //     },
+        //     on: {
+        //         type: new GraphQLNonNull(DateTime),
+        //         defaultValue: () => (Date.now())
+        //     }
+        // })
     }
 });
 
