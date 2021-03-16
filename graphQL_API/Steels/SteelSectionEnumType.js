@@ -4,10 +4,10 @@ const SteelSectionEnumType = new GraphQLEnumType({
     name: 'SteelSectionEnumType',
     values: {
         DIA: {
-            value: 0
+            value: 'DIA'
         },
         RCS: {
-            value: 1
+            value: 'RCS'
         }
     }
 });

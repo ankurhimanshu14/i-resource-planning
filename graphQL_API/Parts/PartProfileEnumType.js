@@ -4,10 +4,10 @@ const PartProfileEnumType = new GraphQLEnumType({
     name: 'PartProfileEnumType',
     values: {
         Gear: {
-            value: 0
+            value: 'Gear'
         },
         Shaft: {
-            value: 1
+            value: 'Shaft'
         }
     }
 });
