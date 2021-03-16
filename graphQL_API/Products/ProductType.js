@@ -1,24 +1,19 @@
 const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLID, GraphQLFloat, GraphQLInt } = require('graphql');
-// const DateTime = require('../DateTime/DateTime');
-// const UserType = require('../Admin/UserType');
-const SteelDescriptionType = require('../Steels/SteelDescriptionType');
-const PartDescriptionType = require('../Parts/PartDescriptionType');
-const SteelSectionEnumType = require('../Steels/SteelSectionEnumType');
-const PartProfileEnumType = require('../Parts/PartProfileEnumType');
-const SteelGradeEnumType = require('../Steels/SteelGradeEnumType');
+const SteelSectionEnumType = require('./SteelSectionEnumType');
+const PartProfileEnumType = require('./PartProfileEnumType');
+const SteelGradeEnumType = require('./SteelGradeEnumType');
 
 const ProductType = new GraphQLObjectType({
     name: 'ProductType',
     description: 'Product type definition',
-    interfaces: [PartDescriptionType, SteelDescriptionType],
     fields: {
         id: {
             type: new GraphQLNonNull(GraphQLID)
         },
-        number: {
-            type: new GraphQLNonNull(GraphQLString)
+        partNumber: {
+            type: new GraphQLNonNull(GraphQLInt)
         },
-        name: {
+        partName: {
             type: new GraphQLNonNull(GraphQLString)
         },
         profile: {

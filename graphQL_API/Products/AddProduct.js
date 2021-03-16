@@ -1,13 +1,37 @@
-const { GraphQLNonNull, GraphQLString, GraphQLFloat } = require('graphql');
+const { GraphQLNonNull, GraphQLString, GraphQLFloat, GraphQLInt } = require('graphql');
 const ProductType = require('./ProductType');
 const fs = require('fs');
 const path = require('path');
 const queryFunction = require('../../dBConfig/queryFunction');
+const PartProfileEnumType = require('./PartProfileEnumType');
+const SteelGradeEnumType = require('./SteelGradeEnumType');
+const SteelSectionEnumType = require('./SteelSectionEnumType');
 
 const AddProduct = {
     name: 'Product',
     type: ProductType,
     args: {
+        partNumber: {
+            type: new GraphQLNonNull(GraphQLInt)
+        },
+        partName: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        profile: {
+            type: new GraphQLNonNull(PartProfileEnumType)
+        },
+        grade: {
+            type: new GraphQLNonNull(SteelGradeEnumType)
+        },
+        barDimension: {
+            type: new GraphQLNonNull(GraphQLInt)
+        },
+        barDimension_UOM: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        barSection: {
+            type: new GraphQLNonNull(SteelSectionEnumType)
+        },
         grossWeight: {
             type: new GraphQLNonNull(GraphQLFloat)
         },
