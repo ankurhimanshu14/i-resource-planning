@@ -28,8 +28,8 @@ const ProductType = new GraphQLObjectType({
         barDimension_UOM: {
             type: new GraphQLNonNull(GraphQLString)
         },
-        barSection: {
-            type: new GraphQLNonNull(SteelSectionEnumType)
+        barCrossSection: {
+            type: new GraphQLNonNull(GraphQLString)
         },
         grossWeight: {
             type: new GraphQLNonNull(GraphQLFloat)

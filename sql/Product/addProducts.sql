@@ -5,7 +5,7 @@ INSERT INTO product
     profile,
     grade,
     barDimension,
-    barSection,
+    barCrossSection,
     barDimension_UOM,
     grossWeight,
     cutWeight,
