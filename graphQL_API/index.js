@@ -1,9 +1,9 @@
-const ProductSchema = require('./Products/ProductSchema');
+const PartSchema = require('./Items/Parts/PartSchema');
 const GRNSchema = require('./GRN/GRNSchema');
 const routes = {
-    Product: {
-        path: '/product',
-        schema: ProductSchema
+    Part: {
+        path: '/part',
+        schema: PartSchema
     },
     GRN: {
         path: '/grn',
