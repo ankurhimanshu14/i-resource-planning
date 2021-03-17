@@ -12,11 +12,12 @@ const PartQuery = new GraphQLObjectType({
                 type: new GraphQLList(PartType),
                 args: {
                     partNumber: {
-                        type: GraphQLInt
+                        type: new GraphQLNonNull(GraphQLInt)
                     }
                 },
                 resolve: async (parentValue, args, context, info) => {
 
+                    const _args = Object.values(args);
                     const _statement = fs.readFileSync(path.join(__dirname + '../../../../sql/Part/findPart.sql')).toString();
                     const Part = await queryFunction(_statement, _args);
                     if(!Part) {

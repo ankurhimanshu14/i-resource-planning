@@ -24,7 +24,7 @@ const PartType = new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLFloat)
         },
         UOM_Weight: {
-            type: new GraphQLNonNull(GraphQLString)
+            type: GraphQLString
         },
         supplyCondition: {
             type: new GraphQLNonNull(GraphQLString)

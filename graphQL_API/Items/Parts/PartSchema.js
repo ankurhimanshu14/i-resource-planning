@@ -4,8 +4,7 @@ const AllPartsQuery = require('./AllPartsQuery');
 const PartQuery = require('./PartQuery');
 
 const PartSchema = new GraphQLSchema({
-    query: AllPartsQuery,
-    query: PartQuery,
+    query: AllPartsQuery || PartQuery,
     mutation: new GraphQLObjectType({
         name: 'PartMutation',
         fields: PartMutation

@@ -1,0 +1,1 @@
+SELECT * FROM STEEL WHERE materialGrade = ?;

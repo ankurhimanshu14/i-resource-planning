@@ -27,7 +27,8 @@ const AddPart = {
             type: new GraphQLNonNull(GraphQLFloat)
         },
         UOM_Weight: {
-            type: new GraphQLNonNull(GraphQLString)
+            type: GraphQLString,
+            defaultValue: "kgs"
         },
         supplyCondition: {
             type: new GraphQLNonNull(GraphQLString)
