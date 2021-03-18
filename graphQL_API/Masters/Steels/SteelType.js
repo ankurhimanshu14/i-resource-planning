@@ -7,6 +7,9 @@ const SteelType = new GraphQLObjectType({
         id: {
             type: new GraphQLNonNull(GraphQLID)
         },
+        itemCode: {
+            type: new GraphQLNonNull(GraphQLID)
+        },
         materialGrade: {
             type: new GraphQLNonNull(GraphQLString)
         },

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const PartType = require('./PartType');
 const queryFunction = require('../../../dBConfig/queryFunction');
-const { GraphQLNonNull, GraphQLString, GraphQLFloat, GraphQLInt, GraphQLID, UniqueDirectiveNamesRule } = require('graphql');
+const { GraphQLNonNull, GraphQLString, GraphQLFloat, GraphQLInt, GraphQLID } = require('graphql');
 const DateTime = require('../../DateTime/DateTime');
 const uuid = require('uuid');
 

@@ -5,12 +5,16 @@ const SteelType = require('./SteelType');
 const queryFunction = require('../../../dBConfig/queryFunction');
 const { GraphQLNonNull, GraphQLString, GraphQLInt } = require('graphql');
 const DateTime = require('../../DateTime/DateTime');
-
+const uuid = require('uuid');
 
 const AddSteel = {
     name: 'Steel',
     type: SteelType,
     args: {
+        itemCode: {
+            type: new GraphQLNonNull(GraphQLID),
+            defaultValue: uuid.v4()
+        },
         materialGrade: {
             type: new GraphQLNonNull(GraphQLString)
         },

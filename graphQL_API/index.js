@@ -1,7 +1,7 @@
 const UserSchema = require('./Admin/UserSchema');
-const PartSchema = require('./Items/Parts/PartSchema');
+const PartSchema = require('./Masters/Parts/PartSchema');
 // const GRNSchema = require('./GRN/GRNSchema');
-const SteelSchema = require('./Items/Steels/SteelSchema');
+const SteelSchema = require('./Masters/Steels/SteelSchema');
 const routes = {
     User: {
         path: '/user',
