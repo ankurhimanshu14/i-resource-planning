@@ -1,16 +1,19 @@
-
 const fs = require('fs');
 const path = require('path');
 const PartType = require('./PartType');
 const queryFunction = require('../../../dBConfig/queryFunction');
-const { GraphQLNonNull, GraphQLString, GraphQLFloat, GraphQLInt } = require('graphql');
+const { GraphQLNonNull, GraphQLString, GraphQLFloat, GraphQLInt, GraphQLID, UniqueDirectiveNamesRule } = require('graphql');
 const DateTime = require('../../DateTime/DateTime');
-
+const uuid = require('uuid');
 
 const AddPart = {
     name: 'Part',
     type: PartType,
     args: {
+        itemCode: {
+            type: new GraphQLNonNull(GraphQLID),
+            defaultValue: uuid.v4()
+        },
         partNumber: {
             type: new GraphQLNonNull(GraphQLInt)
         },
@@ -27,8 +30,8 @@ const AddPart = {
             type: new GraphQLNonNull(GraphQLFloat)
         },
         UOM_Weight: {
-            type: GraphQLString,
-            defaultValue: "kgs"
+            type: new GraphQLNonNull(GraphQLString),
+            defaultValue: "kg"
         },
         supplyCondition: {
             type: new GraphQLNonNull(GraphQLString)

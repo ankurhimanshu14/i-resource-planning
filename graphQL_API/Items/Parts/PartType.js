@@ -8,6 +8,9 @@ const PartType = new GraphQLObjectType({
         id: {
             type: new GraphQLNonNull(GraphQLID)
         },
+        itemCode: {
+            type: new GraphQLNonNull(GraphQLID)
+        },
         partNumber: {
             type: new GraphQLNonNull(GraphQLInt)
         },

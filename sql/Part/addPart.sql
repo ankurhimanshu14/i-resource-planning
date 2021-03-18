@@ -1,5 +1,6 @@
 INSERT INTO part
 (
+    itemCode,
     partNumber,
     partName,
     materialGrade,
@@ -9,4 +10,4 @@ INSERT INTO part
     supplyCondition,
     drgIssueDate
 )
-VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);

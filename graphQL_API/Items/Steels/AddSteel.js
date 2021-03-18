@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const SteelType = require('./SteelType');
 const queryFunction = require('../../../dBConfig/queryFunction');
-const { GraphQLNonNull, GraphQLString, GraphQLFloat, GraphQLInt } = require('graphql');
+const { GraphQLNonNull, GraphQLString, GraphQLInt } = require('graphql');
 const DateTime = require('../../DateTime/DateTime');
 
 
