@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } = require('graphql');
+const { GraphQLObjectType, GraphQLList, GraphQLNonNull, GraphQLString } = require('graphql');
 const queryFunction = require('../../../dBConfig/queryFunction');
 const SteelType = require('./SteelType');
 const fs = require('fs');
@@ -8,6 +8,18 @@ const SteelQuery = new GraphQLObjectType({
     name: 'SteelQuery',
     fields: () => {
         return {
+            Steels: {
+                type: new GraphQLList(SteelType),
+                resolve: async () => {
+
+                    const _statement = fs.readFileSync(path.join(__dirname + '../../../../sql/Steel/allSteels.sql')).toString();
+                    const Steels = await queryFunction(_statement);
+                    if(!Steels) {
+                        throw new Error('Error in fetching data');
+                    }
+                    return Steels;
+                }
+            },
             Steel: {
                 type: new GraphQLList(SteelType),
                 args: {
