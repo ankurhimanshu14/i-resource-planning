@@ -5,13 +5,13 @@ const UserRoleEnumType = new GraphQLEnumType({
     description: 'User role type definition.',
     values: {
         ROOT: {
-            value: 0
+            value: 'ROOT'
         },
         SUPER_USER: {
-            value: 1
+            value: 'SUPER_USER'
         },
         USER: {
-            value: 2
+            value: 'USER'
         }
     }
 });

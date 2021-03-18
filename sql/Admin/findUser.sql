@@ -1,1 +1,1 @@
-SELECT * FROM user WHERE username = ? AND password = ?;
+SELECT email, password FROM user WHERE username = ?;

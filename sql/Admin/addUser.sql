@@ -1,6 +1,8 @@
-INSERT INTO user(
+INSERT INTO user
+(
     email,
     username,
     password,
     role
-) VALUES (?, ?, ?, ?);
+)
+VALUES (?, ?, ?, ?);

@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require("graphql");
+const { GraphQLNonNull, GraphQLString } = require("graphql");
 const UserType = require('./UserType');
 const UserRoleEnumType = require('./UserRoleEnumType');
 const queryFunction = require('../../dBConfig/queryFunction');
@@ -34,11 +34,11 @@ const AddUser = {
             throw new Error('Error in creating table');
         }
 
-        args.password = encrypt(args.password, 10);
+        args.password = await encrypt(args.password, 10);
         const _args = Object.values(args);
         const newUser = await queryFunction(_statement2, _args);
         if(!newUser) {
-            throw new Error('Error in fethcing the data');
+            throw new Error('Error in fetching the data');
         }
         return newUser;
     }
