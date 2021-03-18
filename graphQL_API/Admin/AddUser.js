@@ -1,12 +1,12 @@
-const { GraphQLObjectType } = require("graphql");
+const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require("graphql");
 const UserType = require('./UserType');
 const UserRoleEnumType = require('./UserRoleEnumType');
-const DateTime = require('../DateTime/DateTime');
 const queryFunction = require('../../dBConfig/queryFunction');
 const fs = require('fs');
 const path = require('path');
+const encrypt = require("../../_helpers/encrypt");
 
-const AddUser = new GraphQLObjectType({
+const AddUser = {
     name: 'User',
     type: UserType,
     args: {
@@ -22,35 +22,26 @@ const AddUser = new GraphQLObjectType({
         role: {
             type: new GraphQLNonNull(UserRoleEnumType),
             defaultValue: 'USER'
-        },
-        created:  new GraphQLObjectType({
-            createdBy: {
-                type: new GraphQLNonNull(UserType),
-                defaultValue: 'SUPER_USER'
-            },
-            createdAt: {
-                type: new GraphQLNonNull(DateTime),
-                defaultValue: () => (Date.now())
-            }
-        })
+        }
     },
     resolve: async (parentValue, args, context, info) => {
 
-        const _args = Object.values(args).flat(Infinity);
-        const _statement1 = fs.readFileSync(path.join(__dirname + '../../sql/Admin/createUserTable.sql')).toString();
-        const _statement2 = fs.readFileSync(path.join(__dirname + '../../sql/Admin/addUser.sql')).toString();
+        const _statement1 = fs.readFileSync(path.join(__dirname + '../../../sql/Admin/createUserTable.sql')).toString();
+        const _statement2 = fs.readFileSync(path.join(__dirname + '../../../sql/Admin/addUser.sql')).toString();
 
         const createTable = await queryFunction(_statement1);
         if(!createTable) {
             throw new Error('Error in creating table');
         }
 
+        args.password = encrypt(args.password, 10);
+        const _args = Object.values(args);
         const newUser = await queryFunction(_statement2, _args);
         if(!newUser) {
             throw new Error('Error in fethcing the data');
         }
         return newUser;
     }
-});
+};
 
 module.exports = AddUser;
