@@ -47,7 +47,9 @@ const UserQuery = new GraphQLObjectType({
                             throw new Error("Wrong Crendentials");
                         } else {
                             console.log("Login Success");
-                            return User
+                            const json = JSON.stringify(User);
+                            const parsedObject = JSON.parse(json)[0];
+                            console.log(parsedObject.email);
                         }
                     }
 
